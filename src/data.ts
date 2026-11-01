@@ -1,8 +1,180 @@
-export type Product={id:number;brand:string;name:string;category:string;price:number;oldPrice:number;image:string;sizes:string[]};
-const shoes=['39','40','41','42','43','44','45'],kits=['S','M','L','XL','XXL'];
-const imgs=['1542291026-7eec264c27ff','1525966222134-fcfa99b8ae77','1608231387042-66d1773070a5','1600185365926-3a2ce3cdb9eb','1520256862855-398228c41684','1600269452121-4f2416e55c28','1549298916-b41d501d3772','1491553895911-0055eca6402d','1576566588028-4147f3842f27','1503342217505-b0a15ec3261c','1521572163474-6864f9cf17ab','1503341504253-dff4815485f1','1614632537190-23e4146777db','1579952363873-27f3bade9f55','1574629810360-7efbbe195018','1586350977771-b3b0abd50c82'];
-const raw:[string,string,string,number][]=[
-['NIKE','Mercurial Vapor 16 Elite','Бутсы',9495],['ADIDAS','Predator Elite FG','Бутсы',8495],['PUMA','Future 7 Ultimate','Бутсы',7495],['NIKE','Phantom GX 2 Academy','Бутсы',4995],['ADIDAS','F50 League FG','Бутсы',5495],['PUMA','Ultra 5 Match','Бутсы',3995],['NIKE','Tiempo Legend 10','Бутсы',6495],['ADIDAS','Copa Pure 2','Бутсы',5995],['ADIDAS','Real Madrid Home','Форма',2745],['NIKE','Barcelona Home','Форма',2995],['ADIDAS','Manchester United Home','Форма',2745],['PUMA','Manchester City Home','Форма',2495],['ADIDAS','UCL League Ball','Мячи',2245],['NIKE','Academy Football','Мячи',1495],['NIKE','Goalkeeper Gloves','Аксессуары',1995],['4PLAY','Training Socks','Аксессуары',495]];
-const bootPhotos=["https://sporthink.sm.mncdn.com/mnresize/750/-/sporthink/uploads/products/original_160792_3.jpeg","https://www.ultrafootball.com/cdn/shop/files/JI1082_12_2048x.png?v=1751263003","https://www.taylorsoccer.ca/cdn/shop/files/AURORA_HJ7325-600_PHCFH001-2000_800x.jpg?v=1750880724","https://www.sportpoint.lt/images/uploader/ad/1308x1308.g/adidas-predator-elite-fg-4-1.png?v=1765810644","https://sportland.com/media/catalog/product/cache/45d29c4f3d7825954b7edd35f17b2846/F/Q/FQ1457_400_3_fe31.jpg","https://www.sportvision.hu/files/thumbs/files/images/slike_proizvoda/media/ID3/ID3882/images/thumbs_800/ID3882_2_800_800px.jpg.webp","https://www.magistafootball.com/25207-thickbox_default/crampons-de-football-nike-mercurial-vapor-16-elite-fg-noir-blanc-rose-bleu.jpg","https://rirexpress.com/cdn/shop/files/AURORA_FQ1457-700_PHCTH001-2000_1024x1024_bcb37731-fd9f-4d05-bc24-65625d73c092.jpg?v=1729357092&width=1024"];
-export const products:Product[]=raw.map(([brand,name,category,price],i)=>({id:i+1,brand,name,category,price,oldPrice:price*2,image:i<8?bootPhotos[i]:'https://images.unsplash.com/photo-'+imgs[i]+'?w=900&q=85',sizes:category==='Бутсы'?shoes:category==='Форма'?kits:category==='Мячи'?['5']:['S','M','L']}));
-export const money=(n:number)=>new Intl.NumberFormat('ru-RU').format(n)+' ₽';
+export type Product = {
+  id: number;
+  brand: string;
+  name: string;
+  category: string;
+  price: number;
+  image: string;
+  sizes: string[];
+  color: string;
+  description: string;
+  ground?: string;
+  club?: string;
+  badge?: string;
+};
+const boots = ["39", "40", "41", "42", "43", "44", "45"];
+const kits = ["S", "M", "L", "XL", "XXL"];
+const photo = (name: string) => `/images/${name}.webp`;
+export const products: Product[] = [
+  {
+    id: 1,
+    brand: "NIKE",
+    name: "Mercurial Vapor 16 Elite",
+    category: "Бутсы",
+    price: 9495,
+    image: photo("vapor"),
+    sizes: boots,
+    color: "Голубой / белый",
+    ground: "FG",
+    badge: "Выбор 4PLAY",
+    description:
+      "Для тех, кто решает эпизод на скорости. Лёгкий силуэт Mercurial, низкий профиль и шипованная подошва для игры на натуральном газоне.",
+  },
+  {
+    id: 2,
+    brand: "ADIDAS",
+    name: "Predator Elite",
+    category: "Бутсы",
+    price: 8495,
+    image: photo("predator"),
+    sizes: boots,
+    color: "Красный / серебристый",
+    ground: "FG",
+    description:
+      "Контроль с первого касания. Фактурный верх и выразительный силуэт Predator для уверенной работы с мячом на натуральном газоне.",
+  },
+  {
+    id: 3,
+    brand: "PUMA",
+    name: "Future 7 Ultimate",
+    category: "Бутсы",
+    price: 7495,
+    image: photo("future"),
+    sizes: boots,
+    color: "Белый / розовый",
+    ground: "FG/AG",
+    badge: "Для плеймейкеров",
+    description:
+      "Свобода для нестандартных решений. Гибкий верх и комфортная посадка для смены направления и игры в своём ритме.",
+  },
+  {
+    id: 4,
+    brand: "NIKE",
+    name: "Phantom GX 2 Elite",
+    category: "Бутсы",
+    price: 6995,
+    image: photo("phantom"),
+    sizes: boots,
+    color: "Розовый / чёрный",
+    ground: "FG",
+    description:
+      "Точность в каждом движении. Асимметричная шнуровка и текстурированный верх для контроля мяча и решающего паса.",
+  },
+  {
+    id: 5,
+    brand: "ADIDAS",
+    name: "F50 Elite",
+    category: "Бутсы",
+    price: 7495,
+    image: photo("f50"),
+    sizes: boots,
+    color: "Голубой / розовый",
+    ground: "FG",
+    description:
+      "Созданы для рывка. Лаконичный низкий силуэт, лёгкая конструкция и шипы для игры на твёрдом натуральном газоне.",
+  },
+  {
+    id: 9,
+    brand: "ADIDAS",
+    name: "Real Madrid · Home 24/25",
+    category: "Форма",
+    price: 2745,
+    image: photo("real"),
+    sizes: kits,
+    color: "Белый / чёрный",
+    club: "Real Madrid",
+    badge: "Клубная классика",
+    description:
+      "Домашняя футболка мадридского «Реала» сезона 2024/25. Знаменитый белый цвет и чёрные детали — для тех, чьё сердце на «Бернабеу».",
+  },
+  {
+    id: 10,
+    brand: "NIKE",
+    name: "FC Barcelona · Home 24/25",
+    category: "Форма",
+    price: 2995,
+    image: photo("barca"),
+    sizes: kits,
+    color: "Синий / гранатовый",
+    club: "FC Barcelona",
+    description:
+      "Домашняя футболка «Барселоны» сезона 2024/25. Двухцветный дизайн к 125-летию клуба — больше, чем просто цвета.",
+  },
+  {
+    id: 11,
+    brand: "ADIDAS",
+    name: "Manchester United · Home 24/25",
+    category: "Форма",
+    price: 2745,
+    image: photo("united"),
+    sizes: kits,
+    color: "Красный / белый",
+    club: "Manchester United",
+    description:
+      "Домашняя футболка «Манчестер Юнайтед» сезона 2024/25. Красный цвет, клубная эмблема и дух «Олд Траффорд».",
+  },
+  {
+    id: 12,
+    brand: "PUMA",
+    name: "Manchester City · Home 24/25",
+    category: "Форма",
+    price: 2495,
+    image: photo("city"),
+    sizes: kits,
+    color: "Небесно-голубой",
+    club: "Manchester City",
+    description:
+      "Домашняя футболка «Манчестер Сити» сезона 2024/25. Небесно-голубой цвет и детали, вдохновлённые Манчестером.",
+  },
+  {
+    id: 13,
+    brand: "ADIDAS",
+    name: "UCL League · 24/25",
+    category: "Мячи",
+    price: 2245,
+    image: photo("ball"),
+    sizes: ["5"],
+    color: "Белый / чёрный",
+    badge: "Ночи Лиги чемпионов",
+    description:
+      "Футбольный мяч в дизайне Лиги чемпионов сезона 2024/25. Узнаваемые звёзды — для большого футбола на твоём поле.",
+  },
+  {
+    id: 15,
+    brand: "NIKE",
+    name: "Match Goalkeeper",
+    category: "Аксессуары",
+    price: 1995,
+    image: photo("gloves"),
+    sizes: ["7", "8", "9", "10", "11"],
+    color: "Голубой / жёлтый",
+    description:
+      "Вратарские перчатки Nike Match с регулируемым ремешком на запястье. Для тренировок, сейвов и уверенности в своей штрафной.",
+  },
+  {
+    id: 16,
+    brand: "ADIDAS",
+    name: "Rivalry Soccer 2.0",
+    category: "Аксессуары",
+    price: 695,
+    image: photo("socks"),
+    sizes: ["S", "M", "L"],
+    color: "Чёрный / белый",
+    description:
+      "Высокие футбольные гетры adidas. Эластичная посадка и классический чёрный цвет — завершающий штрих твоей экипировки.",
+  },
+];
+export const categories = ["Все", "Бутсы", "Форма", "Мячи", "Аксессуары"];
+export const money = (n: number) =>
+  new Intl.NumberFormat("ru-RU").format(n) + " ₽";
+export const productById = (id: number) => products.find((p) => p.id === id);
