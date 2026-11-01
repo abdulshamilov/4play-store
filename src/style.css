@@ -32,3 +32,28 @@
 .hero-actions .primary{padding:19px 25px}
 @media(max-width:950px){.hero-layout{grid-template-columns:1fr 1fr}.hero-action{min-height:560px}.hero-action-stamp{font-size:55px}}
 @media(max-width:680px){.hero-layout{padding:0!important;display:flex;flex-direction:column-reverse;gap:0}.hero-action{min-height:310px;height:310px;width:100%;margin:0}.hero-action>img{object-position:center 42%}.hero-action-shade{background:linear-gradient(0deg,#0a0a0b 0%,#0a0a0b00 65%),linear-gradient(90deg,#0005,transparent)}.hero-action-stamp{font-size:50px;top:25px;right:15px}.hero-action .hero-product-caption{bottom:24px;left:14px;right:14px}.hero-copy{padding:30px 14px 48px;width:100%}.hero h1{font-size:clamp(54px,12.5vw,83px);margin:20px 0}.hero-meta{margin-top:25px}.hero-actions{gap:16px}}
+
+/* 4PLAY storefront polish */
+:root{--accent:#ff681c}
+.instagram-link{display:grid;place-items:center;color:#eee}.instagram-link:hover{color:var(--accent)}
+.trustbar{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:24px;padding-bottom:24px;border-bottom:1px solid #292929}
+.trustbar>div{display:flex;align-items:center;gap:14px;border-right:1px solid #333;padding:8px 20px}
+.trustbar>div:first-child{padding-left:0}.trustbar>div:last-child{border:0}
+.trustbar svg{color:var(--accent);flex-shrink:0}
+.trustbar span{display:flex;flex-direction:column;gap:5px}
+.trustbar b{font-size:11px;letter-spacing:.06em}
+.trustbar small{color:#888;font-size:11px}
+.campaign-band{margin-top:20px;background:#191919;overflow:hidden}
+.campaign-inner{display:grid;grid-template-columns:1fr 1fr;min-height:450px;align-items:center;gap:30px}
+.campaign-inner>div{position:relative;z-index:2;padding:45px 0}
+.campaign-inner h2{font-size:clamp(42px,5.5vw,80px);font-weight:1000;letter-spacing:-.085em;line-height:.92;margin:22px 0}
+.campaign-inner h2 em{color:var(--accent);font-style:normal}
+.campaign-inner p{color:#aaa;line-height:1.6;margin-bottom:28px}
+.campaign-inner img{height:450px;width:100%;object-fit:cover;filter:grayscale(1) contrast(1.15);mask-image:linear-gradient(90deg,transparent,#000 25%)}
+.product-category{float:right;color:#888;font-size:10px;letter-spacing:0;font-weight:600}
+.card .photo{height:275px;background:#f0f0f0}
+.card .photo img{transition:transform .35s ease;object-fit:contain;mix-blend-mode:multiply;padding:18px}
+.card:hover .photo img{transform:scale(1.08)}
+.card .name{min-height:46px}.card .prices strong{color:#fff}
+.card .tag{background:#ff681c;color:#111}
+@media(max-width:680px){.instagram-link{margin-left:auto}.head .cartlink{margin-left:0}.trustbar{grid-template-columns:1fr 1fr;gap:0;padding-top:15px;padding-bottom:15px}.trustbar>div{padding:8px 12px}.trustbar>div:nth-child(2){border:0}.trustbar>div:nth-child(3){grid-column:1/-1;border-top:1px solid #333;margin-top:8px;padding-top:14px}.trustbar b{font-size:9px}.trustbar small{font-size:10px}.campaign-inner{display:flex;flex-direction:column-reverse;gap:0}.campaign-inner img{height:240px;mask-image:linear-gradient(0deg,transparent,#000 30%);width:calc(100% + 28px)}.campaign-inner>div{padding:0 0 35px;width:100%}.campaign-inner h2{font-size:43px}.card .photo{height:175px}.card .photo img{padding:9px}}
